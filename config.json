@@ -1,0 +1,5 @@
+{
+	"prefix": "!",
+	"token": "DISCORD_TOKEN",
+	"defaultCooldown":  5
+}
