@@ -1,5 +1,0 @@
-{
-	"prefix": "!",
-	"token": process.env.DISCORD_TOKEN,
-	"defaultCooldown":  5
-}

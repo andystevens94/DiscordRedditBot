@@ -3,7 +3,10 @@ const fs = require('fs');
 // require the discord.js module
 const Discord = require('discord.js');
 // include the config
-const { prefix, token, defaultCooldown } = require('./config.json');
+//const { prefix, token, defaultCooldown } = require('./config.json');
+const prefix = '!';
+const token = process.env.DISCORD_TOKEN;
+const defaultCooldown = 5;
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
