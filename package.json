@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-     "start": "node index.js"
+    "start": "node index.js"
   },
   "author": "Andy Stevens",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cron": "^1.8.2",
     "discord.js": "^12.2.0",
     "xmlhttprequest": "^1.8.0"
   },

@@ -2,9 +2,10 @@
 const fs = require('fs');
 // require the discord.js module
 const Discord = require('discord.js');
+
 // include the config
 const { prefix, defaultCooldown } = require('./config.json');
-const token = process.env.DISCORD_TOKEN;
+const token = 'NzI1NjgyODYzOTQ4OTU1Njk4.XwByWw.IZpUTlXy9TaSyy7a2cSzVDli_3w';//process.env.DISCORD_TOKEN;
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -17,9 +18,14 @@ for (const file of commandFiles) {
 	// set a new item in the Collection with the key as the command name and the value as the exported module
 	client.commands.set(command.name, command);
 }
-
+let cron = require('./cronFunctions/cronJobs');
+let server;
+let cronChannel;
 // when the client is ready, run this code. This event will only trigger one time after logging in
 client.once('ready', () => {
+	server = client.guilds.cache.get("725682391682908180");
+	cronChannel = server.channels.cache.get('725682391682908183');
+	cron.runJobs(cronChannel);
 	console.log('Ready!');
 });
 

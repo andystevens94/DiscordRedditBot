@@ -2,6 +2,7 @@ let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 'use strict';
 let https = require('https');
 let filterList = ["day", "week", "month", "year", "all", "hot"];
+let helpers = require('./../business/helpers');
 
 module.exports = {
 	name: 'reddit',
@@ -39,7 +40,7 @@ module.exports = {
 				url = `https://www.reddit.com/r/${subreddit}/top.json?t=${filter}&limit=${postCount}`;
 			}
 			let jsonResponse;
-			let int = getRandomInt(0, postCount - 1);
+			let int = helpers.getRandomInt(0, postCount - 1);
 
 			https.get(url, function (res) {
 				let body = '';
@@ -49,7 +50,7 @@ module.exports = {
 				res.on('end', function () {
 					jsonResponse = JSON.parse(body);
 					//update post count with the number of distinct posts from json
-					jsonPostCount = jsonResponse.data.dist;
+					let jsonPostCount = jsonResponse.data.dist;
 
 					for (let i = 0; i < jsonPostCount; i++) {
 						let postInt = (int + i) % jsonPostCount;
@@ -78,14 +79,6 @@ module.exports = {
 		});
 	}
 };
-
-
-
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 function checkSubreddit(subreddit) {
 	return new Promise(function (resolve, reject) {
