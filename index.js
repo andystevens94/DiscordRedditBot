@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 
 // include the config
 const { prefix, defaultCooldown } = require('./config.json');
-const token = 'NzI1NjgyODYzOTQ4OTU1Njk4.XwByWw.IZpUTlXy9TaSyy7a2cSzVDli_3w';//process.env.DISCORD_TOKEN;
+const token = process.env.DISCORD_TOKEN;
 // create a new Discord client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
