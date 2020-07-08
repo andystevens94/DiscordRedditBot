@@ -6,7 +6,7 @@ let https = require('https');
 module.exports = { dailyMeme };
 
 function dailyMeme(channel) {
-	let limit = 50;
+	let limit = 5;
 	let int = helpers.getRandomInt(0, limit - 1);
 	let url = `https://www.reddit.com/r/ProgrammerHumor/top.json?t=day&limit=${limit}`;
 	let jsonResponse;
